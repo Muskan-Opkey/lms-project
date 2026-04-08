@@ -1,0 +1,175 @@
+<!-- Hero Section -->
+<section class="hero-section text-center">
+  <div class="container">
+    <h1 class="display-3 fw-bold mb-4 fade-in">Welcome to Our Learning Platform</h1>
+    <p class="lead mb-5 fade-in fade-in-delay-1">Discover thousands of courses and enhance your skills with expert instructors</p>
+    <a routerLink="/courses" class="btn btn-light btn-lg px-5 py-3 fade-in fade-in-delay-2">
+      <i class="bi bi-mortarboard-fill me-2"></i>Browse Courses
+    </a>
+  </div>
+</section>
+
+<!-- Features Bar -->
+<section class="py-4 bg-white border-bottom">
+  <div class="container">
+    <div class="row text-center g-4">
+      <div class="col-6 col-md-3">
+        <div class="d-flex align-items-center justify-content-center">
+          <i class="bi bi-people-fill text-primary fs-3 me-2"></i>
+          <div class="text-start">
+            <h5 class="mb-0">10K+</h5>
+            <small class="text-muted">Students</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="d-flex align-items-center justify-content-center">
+          <i class="bi bi-book-fill text-primary fs-3 me-2"></i>
+          <div class="text-start">
+            <h5 class="mb-0">500+</h5>
+            <small class="text-muted">Courses</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="d-flex align-items-center justify-content-center">
+          <i class="bi bi-award-fill text-primary fs-3 me-2"></i>
+          <div class="text-start">
+            <h5 class="mb-0">95%</h5>
+            <small class="text-muted">Success Rate</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="d-flex align-items-center justify-content-center">
+          <i class="bi bi-star-fill text-primary fs-3 me-2"></i>
+          <div class="text-start">
+            <h5 class="mb-0">4.8/5</h5>
+            <small class="text-muted">Rating</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Courses Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Featured Courses</h2>
+      <p class="text-muted">Start learning with our most popular courses</p>
+    </div>
+    <div class="row g-4">
+      <!-- Loop through featured courses using *ngFor -->
+      <div class="col-md-6 col-lg-4" *ngFor="let course of featuredCourses; let i = index">
+        <div class="card course-card h-100 shadow-sm" [class]="'fade-in fade-in-delay-' + (i % 3 + 1)">
+          <div class="position-relative overflow-hidden" style="height: 200px;">
+            <img [src]="course.image" class="card-img-top h-100 w-100" [alt]="course.title" style="object-fit: cover;">
+            <span class="badge bg-danger position-absolute top-0 end-0 m-3">Popular</span>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h5 class="card-title mb-0">{{ course.title }}</h5>
+              <span class="badge bg-primary">{{ course.level }}</span>
+            </div>
+            <p class="card-text text-muted mt-3">{{ course.description }}</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <small class="text-muted">
+                <i class="bi bi-person-circle me-1"></i>{{ course.instructor }}
+              </small>
+            </div>
+            <div class="mt-2">
+              <small class="text-muted">
+                <i class="bi bi-clock me-1"></i>{{ course.duration }}
+              </small>
+              <small class="text-muted ms-3">
+                <i class="bi bi-star-fill text-warning me-1"></i>4.8 (230)
+              </small>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent border-0 pb-3">
+            <button class="btn btn-primary w-100" (click)="enrollCourse(course.id)">
+              <i class="bi bi-play-circle me-2"></i>Enroll Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- View All Courses Button -->
+    <div class="text-center mt-5">
+      <a routerLink="/courses" class="btn btn-outline-primary btn-lg px-5">
+        View All Courses <i class="bi bi-arrow-right ms-2"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Why Choose Our Platform?</h2>
+      <p class="text-muted">Everything you need to succeed in your learning journey</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="text-center p-4 hover-card bg-white rounded">
+          <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+            <i class="bi bi-mortarboard-fill text-primary fs-1"></i>
+          </div>
+          <h5 class="fw-bold">Expert Instructors</h5>
+          <p class="text-muted">Learn from industry professionals with years of experience</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="text-center p-4 hover-card bg-white rounded">
+          <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+            <i class="bi bi-clock-history text-success fs-1"></i>
+          </div>
+          <h5 class="fw-bold">Flexible Learning</h5>
+          <p class="text-muted">Study at your own pace, anytime and anywhere</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="text-center p-4 hover-card bg-white rounded">
+          <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+            <i class="bi bi-patch-check-fill text-warning fs-1"></i>
+          </div>
+          <h5 class="fw-bold">Certificates</h5>
+          <p class="text-muted">Earn recognized certifications upon completion</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="text-center p-4 hover-card bg-white rounded">
+          <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+            <i class="bi bi-chat-dots-fill text-info fs-1"></i>
+          </div>
+          <h5 class="fw-bold">Community Support</h5>
+          <p class="text-muted">Connect with fellow learners and get help</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="card border-0 shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+      <div class="card-body text-white text-center py-5">
+        <h2 class="fw-bold mb-3">Ready to Start Learning?</h2>
+        <p class="lead mb-4">Join thousands of students already learning on our platform</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+          <a routerLink="/registration" class="btn btn-light btn-lg px-5">
+            <i class="bi bi-pencil-square me-2"></i>Register Now
+          </a>
+          <a routerLink="/contact" class="btn btn-outline-light btn-lg px-5">
+            <i class="bi bi-envelope me-2"></i>Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

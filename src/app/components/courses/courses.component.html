@@ -1,0 +1,171 @@
+<!-- Page Header -->
+<section class="bg-primary text-white py-5">
+  <div class="container text-center">
+    <h1 class="display-3 fw-bold mb-3 fade-in">Explore Our Courses</h1>
+    <p class="lead mb-4 fade-in fade-in-delay-1">Choose from our wide range of programming languages and specializations</p>
+    
+    <!-- Search Bar -->
+    <div class="row justify-content-center fade-in fade-in-delay-2">
+      <div class="col-md-8 col-lg-6">
+        <div class="input-group input-group-lg shadow-lg">
+          <span class="input-group-text bg-white border-0">
+            <i class="bi bi-search"></i>
+          </span>
+          <input 
+            type="text" 
+            class="form-control border-0" 
+            placeholder="Search courses..."
+            [(ngModel)]="searchTerm"
+            (input)="filterCourses()">
+          <button class="btn btn-light" type="button" *ngIf="searchTerm" (click)="clearSearch()">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Section -->
+<section class="py-4 bg-light border-bottom">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <div class="d-flex flex-wrap gap-2">
+          <button 
+            class="btn btn-sm"
+            [class.btn-primary]="selectedCategory === 'all'"
+            [class.btn-outline-primary]="selectedCategory !== 'all'"
+            (click)="filterByCategory('all')">
+            All Courses
+          </button>
+          <button 
+            class="btn btn-sm"
+            [class.btn-primary]="selectedCategory === 'programming'"
+            [class.btn-outline-primary]="selectedCategory !== 'programming'"
+            (click)="filterByCategory('programming')">
+            <i class="bi bi-code-slash me-1"></i>Programming
+          </button>
+          <button 
+            class="btn btn-sm"
+            [class.btn-primary]="selectedCategory === 'web'"
+            [class.btn-outline-primary]="selectedCategory !== 'web'"
+            (click)="filterByCategory('web')">
+            <i class="bi bi-globe me-1"></i>Web Dev
+          </button>
+          <button 
+            class="btn btn-sm"
+            [class.btn-primary]="selectedCategory === 'data'"
+            [class.btn-outline-primary]="selectedCategory !== 'data'"
+            (click)="filterByCategory('data')">
+            <i class="bi bi-bar-chart me-1"></i>Data Science
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-md-end align-items-center gap-2">
+          <label class="text-muted small mb-0">Sort by:</label>
+          <select class="form-select form-select-sm" style="width: auto;" [(ngModel)]="sortBy" (change)="sortCourses()">
+            <option value="name">Name</option>
+            <option value="popularity">Popularity</option>
+            <option value="level">Difficulty</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Results Count -->
+    <div class="mt-3" *ngIf="searchTerm || selectedCategory !== 'all'">
+      <small class="text-muted">
+        <i class="bi bi-funnel"></i> 
+        Showing {{ filteredLanguages.length }} of {{ languages.length }} courses
+      </small>
+    </div>
+  </div>
+</section>
+
+<!-- Courses Overview Section -->
+<section class="py-5">
+  <div class="container">
+    <!-- No Results Message -->
+    <div *ngIf="filteredLanguages.length === 0" class="text-center py-5">
+      <div class="display-1 text-muted mb-3">🔍</div>
+      <h3 class="text-muted">No courses found</h3>
+      <p class="text-muted">Try adjusting your search or filters</p>
+      <button class="btn btn-primary" (click)="clearFilters()">Clear Filters</button>
+    </div>
+
+    <!-- Languages Grid -->
+    <div class="row g-4" *ngIf="filteredLanguages.length > 0">
+      <div class="col-md-6 col-lg-4" *ngFor="let language of filteredLanguages; let i = index">
+        <div class="card h-100 shadow-sm hover-card" [class]="'fade-in fade-in-delay-' + (i % 3 + 1)">
+          <div class="card-body text-center py-5">
+            <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+              <span class="display-4">{{ language.icon }}</span>
+            </div>
+            <h3 class="fw-bold mb-3">{{ language.name }}</h3>
+            <p class="text-muted mb-4">{{ language.description }}</p>
+            
+            <!-- Course Details -->
+            <div class="d-flex justify-content-around mb-4 text-muted small">
+              <div>
+                <i class="bi bi-book"></i>
+                <div class="fw-semibold">{{ language.courses }}</div>
+                <small>Courses</small>
+              </div>
+              <div>
+                <i class="bi bi-people"></i>
+                <div class="fw-semibold">{{ language.students }}</div>
+                <small>Students</small>
+              </div>
+              <div>
+                <i class="bi bi-star-fill text-warning"></i>
+                <div class="fw-semibold">{{ language.rating }}</div>
+                <small>Rating</small>
+              </div>
+            </div>
+
+            <!-- Topics List -->
+            <ul class="list-unstyled mt-3 text-start">
+              <li class="mb-2" *ngFor="let topic of language.topics">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>{{ topic }}
+              </li>
+            </ul>
+
+            <!-- Action Button -->
+            <div class="mt-4">
+              <button class="btn btn-primary w-100" (click)="exploreCourse(language.id)">
+                <i class="bi bi-play-circle me-2"></i>Explore {{ language.name }}
+              </button>
+            </div>
+          </div>
+          
+          <!-- Badge -->
+          <div class="position-absolute top-0 end-0 m-3">
+            <span class="badge" [class]="'bg-' + language.levelColor">{{ language.level }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row mt-5" *ngIf="filteredLanguages.length > 0">
+      <div class="col-12">
+        <div class="card border-0 shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+          <div class="card-body text-white text-center py-5">
+            <h3 class="fw-bold mb-3">Ready to Start Learning?</h3>
+            <p class="lead mb-4">Browse through the Courses menu to find specialized topics or register now!</p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+              <a routerLink="/registration" class="btn btn-light btn-lg px-5">
+                <i class="bi bi-pencil-square me-2"></i>Register Now
+              </a>
+              <a routerLink="/contact" class="btn btn-outline-light btn-lg px-5">
+                <i class="bi bi-envelope me-2"></i>Get Recommendations
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

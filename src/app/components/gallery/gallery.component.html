@@ -1,0 +1,165 @@
+<div class="gallery-container">
+  <!-- Hero Section -->
+  <section class="hero-section text-center py-5 bg-primary text-white">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-3">
+        <i class="bi bi-play-circle me-3"></i>Demo Videos Gallery
+      </h1>
+      <p class="lead mb-4">Watch our experienced instructors teach various technologies</p>
+      
+      <!-- Special Offers Banner -->
+      <div class="offers-banner mt-4">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="offer-card bg-white text-dark p-3 rounded shadow">
+              <i class="bi bi-percent fs-1 text-success"></i>
+              <h5 class="mt-2">30% OFF</h5>
+              <p class="mb-0 small">On Your First Course</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="offer-card bg-white text-dark p-3 rounded shadow">
+              <i class="bi bi-journal-code fs-1 text-primary"></i>
+              <h5 class="mt-2">Assignments</h5>
+              <p class="mb-0 small">For Practice & Skill Building</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="offer-card bg-white text-dark p-3 rounded shadow">
+              <i class="bi bi-people fs-1 text-warning"></i>
+              <h5 class="mt-2">Mentor Reviews</h5>
+              <p class="mb-0 small">Expert Feedback & Guidance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Videos Grid -->
+  <section class="videos-section py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6 col-md-12" *ngFor="let video of demoVideos">
+          <div class="video-card card shadow-sm h-100">
+            <div class="card-header bg-dark text-white">
+              <h5 class="mb-0">
+                <i class="bi bi-play-btn me-2"></i>{{ video.technology }}
+              </h5>
+            </div>
+            <div class="card-body">
+              <h6 class="card-title fw-bold">{{ video.title }}</h6>
+              <p class="text-muted small mb-3">
+                <i class="bi bi-person-circle me-1"></i>Instructor: {{ video.instructor }}
+              </p>
+              
+              <!-- Video Placeholder - Replace with actual video URL -->
+              <div class="video-wrapper mb-3">
+                <div class="ratio ratio-16x9 bg-dark rounded">
+                  <!-- For YouTube: Replace with iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" -->
+                  <!-- For Vimeo: Replace with iframe src="https://player.vimeo.com/video/YOUR_VIDEO_ID" -->
+                  <div class="d-flex align-items-center justify-content-center text-white">
+                    <div class="text-center">
+                      <i class="bi bi-camera-video fs-1 mb-3"></i>
+                      <p class="mb-2 fw-bold">Video Placeholder</p>
+                      <p class="small">Replace with actual video embed</p>
+                      <code class="small text-warning">{{ video.videoUrl }}</code>
+                    </div>
+                  </div>
+                  <!-- Uncomment and use this structure when you have actual videos:
+                  <iframe 
+                    [src]="video.videoUrl | safe" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                  </iframe>
+                  -->
+                </div>
+              </div>
+              
+              <p class="card-text">{{ video.description }}</p>
+              
+              <!-- Features Tags -->
+              <div class="features-tags mt-3">
+                <span class="badge bg-success me-2">
+                  <i class="bi bi-check-circle me-1"></i>30% Off First Course
+                </span>
+                <span class="badge bg-primary me-2">
+                  <i class="bi bi-journal-check me-1"></i>Assignments
+                </span>
+                <span class="badge bg-warning text-dark">
+                  <i class="bi bi-star-fill me-1"></i>Mentor Reviewed
+                </span>
+              </div>
+            </div>
+            <div class="card-footer bg-light">
+              <button class="btn btn-primary btn-sm me-2">
+                <i class="bi bi-play-circle me-1"></i>Watch Demo
+              </button>
+              <button class="btn btn-outline-success btn-sm">
+                <i class="bi bi-cart-plus me-1"></i>Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Add Your Videos Section -->
+  <section class="instructions-section py-5 bg-light">
+    <div class="container">
+      <h3 class="text-center mb-4">
+        <i class="bi bi-info-circle me-2"></i>How to Add Your Demo Videos
+      </h3>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="card">
+            <div class="card-body">
+              <ol class="mb-0">
+                <li class="mb-3">
+                  <strong>Upload your videos</strong> to YouTube, Vimeo, or your preferred video hosting platform
+                </li>
+                <li class="mb-3">
+                  <strong>Get the embed URL:</strong>
+                  <ul class="mt-2">
+                    <li>YouTube: <code>https://www.youtube.com/embed/YOUR_VIDEO_ID</code></li>
+                    <li>Vimeo: <code>https://player.vimeo.com/video/YOUR_VIDEO_ID</code></li>
+                  </ul>
+                </li>
+                <li class="mb-3">
+                  <strong>Update the component:</strong> Open 
+                  <code>src/app/components/gallery/gallery.component.ts</code> and replace 
+                  <code>YOUR_*_VIDEO_URL_HERE</code> with your actual video URLs
+                </li>
+                <li class="mb-3">
+                  <strong>Uncomment the iframe:</strong> In 
+                  <code>src/app/components/gallery/gallery.component.html</code>, uncomment the iframe section
+                </li>
+                <li>
+                  <strong>Add safe pipe:</strong> Create a safe pipe to sanitize video URLs (see instructions in component)
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section py-5 bg-primary text-white text-center">
+    <div class="container">
+      <h2 class="mb-3">Ready to Start Your Learning Journey?</h2>
+      <p class="lead mb-4">Join thousands of students learning with expert instructors</p>
+      <div class="d-flex justify-content-center gap-3">
+        <button class="btn btn-light btn-lg" routerLink="/courses">
+          <i class="bi bi-grid-3x3-gap me-2"></i>Browse Courses
+        </button>
+        <button class="btn btn-outline-light btn-lg" routerLink="/user-management/signup">
+          <i class="bi bi-person-plus me-2"></i>Sign Up Now
+        </button>
+      </div>
+    </div>
+  </section>
+</div>

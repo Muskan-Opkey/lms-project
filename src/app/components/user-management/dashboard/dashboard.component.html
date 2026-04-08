@@ -1,0 +1,198 @@
+<!-- Page Header -->
+<section class="bg-primary text-white py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="flex-grow-1 text-center text-md-start">
+        <h1 class="display-4 fw-bold">User Dashboard</h1>
+        <p class="lead mb-0">Manage registered users</p>
+      </div>
+      <div class="text-center text-md-end">
+        <button class="btn btn-outline-light btn-lg" (click)="logout()">
+          <i class="bi bi-box-arrow-right me-2"></i>Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dashboard Content -->
+<section class="py-5">
+  <div class="container">
+    
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+      <div class="col-md-4 mb-3">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-shrink-0">
+                <div class="bg-primary bg-opacity-10 rounded p-3">
+                  <i class="bi bi-people-fill text-primary fs-2"></i>
+                </div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="text-muted mb-1">Total Users</h6>
+                <h3 class="mb-0">{{ users.length }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-shrink-0">
+                <div class="bg-success bg-opacity-10 rounded p-3">
+                  <i class="bi bi-check-circle-fill text-success fs-2"></i>
+                </div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="text-muted mb-1">Active Users</h6>
+                <h3 class="mb-0">{{ users.length }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-shrink-0">
+                <div class="bg-info bg-opacity-10 rounded p-3">
+                  <i class="bi bi-search text-info fs-2"></i>
+                </div>
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h6 class="text-muted mb-1">Search Results</h6>
+                <h3 class="mb-0">{{ filteredUsers.length }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search and Actions -->
+    <div class="card border-0 shadow-sm mb-4">
+      <div class="card-body">
+        <div class="row g-3 align-items-center">
+          <div class="col-md-8">
+            <div class="input-group">
+              <span class="input-group-text bg-light">
+                <i class="bi bi-search"></i>
+              </span>
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Search by name or email..."
+                [(ngModel)]="searchTerm"
+                (input)="searchUsers()">
+              <button 
+                class="btn btn-outline-secondary" 
+                type="button"
+                *ngIf="searchTerm"
+                (click)="searchTerm = ''; searchUsers()">
+                <i class="bi bi-x-lg"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <button class="btn btn-primary" routerLink="/user-management/signup">
+              <i class="bi bi-person-plus me-2"></i>Add New User
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Users Table -->
+    <div class="card border-0 shadow-sm">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead class="table-light">
+              <tr>
+                <th scope="col" class="px-4 py-3">
+                  <button class="btn btn-sm btn-link text-decoration-none text-dark p-0" (click)="sort('name')">
+                    Name <i class="bi ms-1" [ngClass]="getSortIcon('name')"></i>
+                  </button>
+                </th>
+                <th scope="col" class="px-4 py-3">
+                  <button class="btn btn-sm btn-link text-decoration-none text-dark p-0" (click)="sort('email')">
+                    Email <i class="bi ms-1" [ngClass]="getSortIcon('email')"></i>
+                  </button>
+                </th>
+                <th scope="col" class="px-4 py-3">
+                  <button class="btn btn-sm btn-link text-decoration-none text-dark p-0" (click)="sort('registeredAt')">
+                    Registered At <i class="bi ms-1" [ngClass]="getSortIcon('registeredAt')"></i>
+                  </button>
+                </th>
+                <th scope="col" class="px-4 py-3 text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of filteredUsers; let i = index" 
+                  [class.table-primary]="i === 0">
+                <td class="px-4 py-3">
+                  <div class="d-flex align-items-center">
+                    <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-2"
+                         style="width: 40px; height: 40px;">
+                      <i class="bi bi-person-fill text-primary"></i>
+                    </div>
+                    <strong>{{ user.name }}</strong>
+                  </div>
+                </td>
+                <td class="px-4 py-3">
+                  <i class="bi bi-envelope me-2 text-muted"></i>{{ user.email }}
+                </td>
+                <td class="px-4 py-3">
+                  <i class="bi bi-calendar-event me-2 text-muted"></i>{{ formatDate(user.registeredAt) }}
+                </td>
+                <td class="px-4 py-3 text-center">
+                  <div class="btn-group" role="group">
+                    <button class="btn btn-sm btn-outline-primary" title="View">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary" title="Edit">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" 
+                            (click)="deleteUser(user.id)"
+                            title="Delete">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Empty State -->
+              <tr *ngIf="filteredUsers.length === 0">
+                <td colspan="4" class="text-center py-5">
+                  <div class="text-muted">
+                    <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                    <p class="mb-0">
+                      <span *ngIf="searchTerm">No users found matching "{{ searchTerm }}"</span>
+                      <span *ngIf="!searchTerm">No users registered yet. <a routerLink="/user-management/signup">Add a new user</a></span>
+                    </p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination (Optional - for future enhancement) -->
+    <div class="d-flex justify-content-between align-items-center mt-4" *ngIf="filteredUsers.length > 0">
+      <small class="text-muted">
+        Showing {{ filteredUsers.length }} of {{ users.length }} users
+      </small>
+    </div>
+
+  </div>
+</section>

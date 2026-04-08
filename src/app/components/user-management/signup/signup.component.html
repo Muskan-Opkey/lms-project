@@ -1,0 +1,210 @@
+<!-- Page Header -->
+<section class="bg-primary text-white py-5">
+  <div class="container">
+    <div class="text-center">
+      <h1 class="display-4 fw-bold">Sign Up</h1>
+      <p class="lead mb-0">Create your account to get started</p>
+    </div>
+  </div>
+</section>
+
+<!-- Sign Up Form Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0">
+          <div class="card-body p-4 p-md-5">
+            <div class="text-center mb-4">
+              <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                   style="width: 70px; height: 70px;">
+                <i class="bi bi-person-plus-fill text-primary fs-1"></i>
+              </div>
+              <h3 class="card-title fw-bold">Create Account</h3>
+              <p class="text-muted">Join our learning platform today</p>
+            </div>
+
+            <!-- Error Message -->
+            <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="bi bi-exclamation-triangle-fill me-2"></i>
+              {{ errorMessage }}
+              <button type="button" class="btn-close" (click)="errorMessage = ''; validationErrors = []"></button>
+            </div>
+
+            <!-- Validation Errors from Backend -->
+            <div *ngIf="validationErrors.length > 0" class="alert alert-warning alert-dismissible fade show" role="alert">
+              <h6 class="alert-heading mb-2">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>Validation Errors:
+              </h6>
+              <ul class="mb-0 ps-3">
+                <li *ngFor="let error of validationErrors">
+                  <strong>{{ error.field }}:</strong> {{ error.message }}
+                  <span *ngIf="error.value" class="text-muted">(Value: "{{ error.value }}")</span>
+                </li>
+              </ul>
+              <button type="button" class="btn-close" (click)="validationErrors = []"></button>
+            </div>
+
+            <!-- Success Message -->
+            <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="bi bi-check-circle-fill me-2"></i>
+              {{ successMessage }}
+              <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+            </div>
+
+            <!-- Sign Up Form -->
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+              
+              <!-- Name Field -->
+              <div class="mb-4">
+                <label for="name" class="form-label fw-semibold">
+                  Full Name <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light">
+                    <i class="bi bi-person"></i>
+                  </span>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="name" 
+                    formControlName="name"
+                    [class.is-invalid]="f['name'].invalid && (f['name'].dirty || f['name'].touched || submitted)"
+                    [class.is-valid]="f['name'].valid && (f['name'].dirty || f['name'].touched)"
+                    placeholder="Enter your full name">
+                </div>
+                <div class="invalid-feedback d-block" 
+                     *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched || submitted)">
+                  <small *ngIf="f['name'].errors?.['required']">
+                    <i class="bi bi-exclamation-circle me-1"></i>Name is required
+                  </small>
+                  <small *ngIf="f['name'].errors?.['minlength']">
+                    <i class="bi bi-exclamation-circle me-1"></i>Name must be at least 3 characters
+                  </small>
+                </div>
+              </div>
+
+              <!-- Email Field -->
+              <div class="mb-4">
+                <label for="email" class="form-label fw-semibold">
+                  Email Address <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light">
+                    <i class="bi bi-envelope"></i>
+                  </span>
+                  <input 
+                    type="email" 
+                    class="form-control" 
+                    id="email" 
+                    formControlName="email"
+                    [class.is-invalid]="f['email'].invalid && (f['email'].dirty || f['email'].touched || submitted)"
+                    [class.is-valid]="f['email'].valid && (f['email'].dirty || f['email'].touched)"
+                    placeholder="example@email.com">
+                </div>
+                <div class="invalid-feedback d-block" 
+                     *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched || submitted)">
+                  <small *ngIf="f['email'].errors?.['required']">
+                    <i class="bi bi-exclamation-circle me-1"></i>Email is required
+                  </small>
+                  <small *ngIf="f['email'].errors?.['email']">
+                    <i class="bi bi-exclamation-circle me-1"></i>Please enter a valid email
+                  </small>
+                </div>
+              </div>
+
+              <!-- Password Field -->
+              <div class="mb-4">
+                <label for="password" class="form-label fw-semibold">
+                  Password <span class="text-danger">*</span>
+                </label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light">
+                    <i class="bi bi-lock"></i>
+                  </span>
+                  <input 
+                    [type]="showPassword ? 'text' : 'password'" 
+                    class="form-control" 
+                    id="password" 
+                    formControlName="password"
+                    [class.is-invalid]="f['password'].invalid && (f['password'].dirty || f['password'].touched || submitted)"
+                    [class.is-valid]="f['password'].valid && (f['password'].dirty || f['password'].touched)"
+                    placeholder="Enter a strong password">
+                  <button 
+                    class="btn btn-outline-secondary" 
+                    type="button"
+                    (click)="togglePasswordVisibility()">
+                    <i [class]="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+                  </button>
+                </div>
+                
+                <!-- Password Strength Indicator -->
+                <div *ngIf="f['password'].value && f['password'].dirty" class="mt-2">
+                  <small class="d-block mb-1">Password Strength:</small>
+                  <div class="progress" style="height: 5px;">
+                    <div 
+                      class="progress-bar"
+                      [class.bg-danger]="getPasswordStrength() === 'weak'"
+                      [class.bg-warning]="getPasswordStrength() === 'medium'"
+                      [class.bg-success]="getPasswordStrength() === 'strong'"
+                      [style.width]="getPasswordStrength() === 'weak' ? '33%' : getPasswordStrength() === 'medium' ? '66%' : '100%'">
+                    </div>
+                  </div>
+                  <small 
+                    [class.text-danger]="getPasswordStrength() === 'weak'"
+                    [class.text-warning]="getPasswordStrength() === 'medium'"
+                    [class.text-success]="getPasswordStrength() === 'strong'">
+                    {{ getPasswordStrength() | titlecase }}
+                  </small>
+                </div>
+
+                <div class="invalid-feedback d-block" 
+                     *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched || submitted)">
+                  <small *ngIf="f['password'].errors?.['required']">
+                    <i class="bi bi-exclamation-circle me-1"></i>Password is required
+                  </small>
+                  <small *ngIf="f['password'].errors?.['minlength']">
+                    <i class="bi bi-exclamation-circle me-1"></i>Password must be at least 8 characters
+                  </small>
+                  <small *ngIf="f['password'].errors?.['pattern']">
+                    <i class="bi bi-exclamation-circle me-1"></i>
+                    Password must contain uppercase, lowercase, number, and special character
+                  </small>
+                </div>
+
+                <small class="text-muted d-block mt-1">
+                  <i class="bi bi-info-circle me-1"></i>
+                  Use 8+ characters with uppercase, lowercase, numbers & symbols
+                </small>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="d-grid">
+                <button 
+                  type="submit" 
+                  class="btn btn-primary btn-lg"
+                  [disabled]="(signupForm.invalid && submitted) || isLoading">
+                  <span *ngIf="!isLoading">
+                    <i class="bi bi-person-plus me-2"></i>Sign Up
+                  </span>
+                  <span *ngIf="isLoading">
+                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                    Creating Account...
+                  </span>
+                </button>
+              </div>
+            </form>
+
+            <!-- Login Link -->
+            <div class="text-center mt-4">
+              <small class="text-muted">
+                Already have an account? 
+                <a routerLink="/login" class="text-primary text-decoration-none fw-semibold">Log In</a>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

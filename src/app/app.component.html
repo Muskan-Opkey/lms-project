@@ -1,0 +1,18 @@
+<!-- Navigation Bar -->
+<app-navbar></app-navbar>
+
+<!-- Main Content Area with Router Outlet -->
+<router-outlet></router-outlet>
+
+<!-- Footer -->
+<app-footer></app-footer>
+
+<!-- Scroll to Top Button -->
+<button 
+  class="scroll-to-top" 
+  [class.visible]="showScrollButton"
+  (click)="scrollToTop()"
+  aria-label="Scroll to top"
+  title="Back to top">
+  <i class="bi bi-arrow-up fs-5"></i>
+</button>

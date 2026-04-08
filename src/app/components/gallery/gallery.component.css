@@ -1,0 +1,228 @@
+/* Gallery Container */
+.gallery-container {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h1 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Offers Banner */
+.offers-banner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.offer-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.offer-card i {
+  display: block;
+}
+
+.offer-card h5 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Video Cards */
+.video-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  overflow: hidden;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.video-card .card-header {
+  border-bottom: 3px solid #667eea;
+}
+
+.video-card .card-title {
+  color: #333;
+  font-size: 1.1rem;
+}
+
+/* Video Wrapper */
+.video-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.video-wrapper .ratio {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+.video-wrapper iframe {
+  border-radius: 8px;
+}
+
+/* Features Tags */
+.features-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.features-tags .badge {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Card Footer Buttons */
+.card-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card-footer .btn {
+  transition: all 0.3s ease;
+}
+
+.card-footer .btn:hover {
+  transform: scale(1.05);
+}
+
+/* Instructions Section */
+.instructions-section {
+  background-color: #f8f9fa;
+}
+
+.instructions-section code {
+  background-color: #e9ecef;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #d63384;
+  font-size: 0.9em;
+}
+
+.instructions-section ol {
+  counter-reset: item;
+  padding-left: 0;
+}
+
+.instructions-section ol > li {
+  counter-increment: item;
+  list-style-type: none;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.instructions-section ol > li::before {
+  content: counter(item);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #667eea;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.instructions-section ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-section .btn {
+  min-width: 180px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta-section .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section .lead {
+    font-size: 1rem;
+  }
+
+  .offer-card {
+    margin-bottom: 1rem;
+  }
+
+  .cta-section .d-flex {
+    flex-direction: column;
+  }
+
+  .cta-section .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .features-tags {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-footer .btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .features-tags .badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.video-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.video-card:nth-child(1) { animation-delay: 0.1s; }
+.video-card:nth-child(2) { animation-delay: 0.2s; }
+.video-card:nth-child(3) { animation-delay: 0.3s; }
+.video-card:nth-child(4) { animation-delay: 0.4s; }
+.video-card:nth-child(5) { animation-delay: 0.5s; }
+.video-card:nth-child(6) { animation-delay: 0.6s; }

@@ -1,0 +1,110 @@
+<!-- Responsive Bootstrap Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">
+      <i class="bi bi-book"></i> LMS Platform
+    </a>
+    
+    <!-- Hamburger Menu for Mobile -->
+    <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <!-- Navigation Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i class="bi bi-house-door me-1"></i>Home
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-book-half me-1"></i>Courses
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="javascript:void(0)">
+                <i class="bi bi-cup-hot me-2"></i>Java
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/courses/java/core"><i class="bi bi-arrow-right-short me-1"></i>Core Java</a></li>
+                <li><a class="dropdown-item" routerLink="/courses/java/advanced"><i class="bi bi-arrow-right-short me-1"></i>Advanced Java</a></li>
+                <li><a class="dropdown-item" routerLink="/courses/java/spring"><i class="bi bi-arrow-right-short me-1"></i>Spring Framework</a></li>
+                <li><a class="dropdown-item" routerLink="/courses/java/hibernate"><i class="bi bi-arrow-right-short me-1"></i>Hibernate</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="javascript:void(0)">
+                <i class="bi bi-python me-2"></i>Python
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/courses/python/basics"><i class="bi bi-arrow-right-short me-1"></i>Python Basics</a></li>
+                <li><a class="dropdown-item" routerLink="/courses/python/django"><i class="bi bi-arrow-right-short me-1"></i>Django</a></li>
+                <li><a class="dropdown-item" routerLink="/courses/python/flask"><i class="bi bi-arrow-right-short me-1"></i>Flask</a></li>
+                <li><a class="dropdown-item" routerLink="/courses/python/data-science"><i class="bi bi-arrow-right-short me-1"></i>Data Science</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="javascript:void(0)">
+                <i class="bi bi-code-slash me-2"></i>Web Development
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" routerLink="/courses/web/html-css"><i class="bi bi-arrow-right-short me-1"></i>HTML & CSS</a></li>
+                <li><a class="dropdown-item" routerLink="/courses/web/javascript"><i class="bi bi-arrow-right-short me-1"></i>JavaScript</a></li>
+                <li><a class="dropdown-item" routerLink="/courses/web/angular"><i class="bi bi-arrow-right-short me-1"></i>Angular</a></li>
+                <li><a class="dropdown-item" routerLink="/courses/web/react"><i class="bi bi-arrow-right-short me-1"></i>React</a></li>
+              </ul>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" routerLink="/courses"><i class="bi bi-grid-3x3-gap me-2"></i>View All Courses</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/e-resources" routerLinkActive="active">
+            <i class="bi bi-book-half me-1"></i>E-Resources
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/gallery" routerLinkActive="active">
+            <i class="bi bi-images me-1"></i>Gallery
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/registration" routerLinkActive="active">
+            <i class="bi bi-clipboard-check me-1"></i>Registration
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userManagementDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle me-1"></i>User Management
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="userManagementDropdown">
+            <li>
+              <a class="dropdown-item" routerLink="/user-management/signup" routerLinkActive="active">
+                <i class="bi bi-person-plus me-2"></i>Sign Up
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/user-management/dashboard" routerLinkActive="active">
+                <i class="bi bi-speedometer2 me-2"></i>Dashboard
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active">
+            <i class="bi bi-envelope me-1"></i>Contact Us
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

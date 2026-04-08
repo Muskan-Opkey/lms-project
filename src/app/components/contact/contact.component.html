@@ -1,0 +1,174 @@
+<!-- Page Header -->
+<section class="bg-primary text-white py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Contact Us</h1>
+    <p class="lead">We'd love to hear from you. Get in touch with us!</p>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Contact Information -->
+      <div class="col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title mb-4">Get In Touch</h4>
+            
+            <!-- Contact Details -->
+            <div class="mb-4">
+              <h6 class="text-primary">
+                <i class="bi bi-geo-alt-fill"></i> Address
+              </h6>
+              <p class="text-muted">123 Learning Street<br>Education City, EC 12345<br>United States</p>
+            </div>
+            
+            <div class="mb-4">
+              <h6 class="text-primary">
+                <i class="bi bi-telephone-fill"></i> Phone
+              </h6>
+              <p class="text-muted">+1 (555) 123-4567</p>
+            </div>
+            
+            <div class="mb-4">
+              <h6 class="text-primary">
+                <i class="bi bi-envelope-fill"></i> Email
+              </h6>
+              <p class="text-muted">support&#64;lmsplatform.com</p>
+            </div>
+            
+            <div class="mb-4">
+              <h6 class="text-primary">
+                <i class="bi bi-clock-fill"></i> Business Hours
+              </h6>
+              <p class="text-muted">Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="card-title mb-4">Send Us a Message</h3>
+            
+            <!-- Success Message -->
+            <div *ngIf="submitted" class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>Thank you!</strong> Your message has been sent successfully. We'll get back to you soon!
+              <button type="button" class="btn-close" (click)="submitted = false"></button>
+            </div>
+            
+            <!-- Contact Form -->
+            <form #contactForm="ngForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <!-- Name Field -->
+                <div class="col-md-6 mb-3">
+                  <label for="contactName" class="form-label">Your Name <span class="text-danger">*</span></label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="contactName" 
+                    name="name"
+                    [(ngModel)]="contactData.name" 
+                    required
+                    placeholder="Enter your name">
+                </div>
+                
+                <!-- Email Field -->
+                <div class="col-md-6 mb-3">
+                  <label for="contactEmail" class="form-label">Email Address <span class="text-danger">*</span></label>
+                  <input 
+                    type="email" 
+                    class="form-control" 
+                    id="contactEmail" 
+                    name="email"
+                    [(ngModel)]="contactData.email" 
+                    required
+                    placeholder="Enter your email">
+                </div>
+              </div>
+              
+              <!-- Subject Field -->
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="subject" 
+                  name="subject"
+                  [(ngModel)]="contactData.subject" 
+                  placeholder="Enter subject">
+              </div>
+              
+              <!-- Message Field -->
+              <div class="mb-3">
+                <label for="contactMessage" class="form-label">Message <span class="text-danger">*</span></label>
+                <textarea 
+                  class="form-control" 
+                  id="contactMessage" 
+                  name="message"
+                  [(ngModel)]="contactData.message" 
+                  required
+                  rows="6"
+                  placeholder="Write your message here..."></textarea>
+              </div>
+              
+              <!-- Submit Button -->
+              <div class="d-grid gap-2">
+                <button 
+                  type="submit" 
+                  class="btn btn-primary btn-lg"
+                  [disabled]="!contactForm.form.valid">
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h3 class="text-center mb-5">Frequently Asked Questions</h3>
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card border-0">
+          <div class="card-body">
+            <h5 class="card-title">How do I enroll in a course?</h5>
+            <p class="card-text text-muted">Browse our courses, select the one you're interested in, and click "Enroll Now". Follow the registration process to get started.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card border-0">
+          <div class="card-body">
+            <h5 class="card-title">Do you offer certificates?</h5>
+            <p class="card-text text-muted">Yes! Upon successful completion of any course, you'll receive a certificate that you can share on your professional profiles.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card border-0">
+          <div class="card-body">
+            <h5 class="card-title">Can I access courses on mobile?</h5>
+            <p class="card-text text-muted">Absolutely! Our platform is fully responsive and works seamlessly on all devices including smartphones and tablets.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card border-0">
+          <div class="card-body">
+            <h5 class="card-title">What is your refund policy?</h5>
+            <p class="card-text text-muted">We offer a 30-day money-back guarantee. If you're not satisfied with a course, contact us for a full refund within 30 days of purchase.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

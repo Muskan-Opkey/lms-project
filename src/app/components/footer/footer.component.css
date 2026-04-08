@@ -1,0 +1,132 @@
+/* Footer Component Styles */
+footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #667eea, #764ba2, #667eea, transparent);
+}
+
+.hover-link {
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.hover-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+}
+
+.hover-link:hover {
+  color: #667eea !important;
+  padding-left: 8px;
+}
+
+.hover-link:hover::after {
+  width: 100%;
+}
+
+.social-links a {
+  font-size: 1.3rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-links a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+
+.social-links a:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.social-links a:hover {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+footer h5 {
+  font-weight: 700;
+  color: #ffffff;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+footer h5::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+/* Footer Links List */
+footer ul li {
+  position: relative;
+  padding-left: 15px;
+  transition: padding-left 0.3s ease;
+}
+
+footer ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: #667eea;
+}
+
+footer ul li:hover {
+  padding-left: 20px;
+}
+
+footer ul li:hover::before {
+  opacity: 1;
+}
+
+/* Footer Bottom Border */
+.border-top {
+  position: relative;
+}
+
+.border-top::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #667eea, transparent);
+}

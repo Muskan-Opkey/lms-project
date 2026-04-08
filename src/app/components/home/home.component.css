@@ -1,0 +1,71 @@
+/* Home Component Styles */
+.hero-section {
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-light:hover {
+  background-color: #ffffff;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Stats Animation */
+.stats-item {
+  transition: transform 0.3s ease;
+}
+
+.stats-item:hover {
+  transform: scale(1.1);
+}
+
+/* Feature Cards */
+.hover-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.hover-card:hover::before {
+  opacity: 1;
+  animation: shine 1.5s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    left: -50%;
+    top: -50%;
+  }
+  100% {
+    left: 150%;
+    top: 150%;
+  }
+}
+
+/* CTA Section */
+.cta-section {
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 400px;
+  }
+}
+

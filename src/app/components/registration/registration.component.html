@@ -1,0 +1,181 @@
+<div class="registration-container py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <!-- Header -->
+        <div class="text-center mb-4">
+          <h2 class="fw-bold">
+            <i class="bi bi-clipboard-check me-2 text-primary"></i>
+            Course Registration
+          </h2>
+          <p class="text-muted">Fill out the form below to register for a course</p>
+        </div>
+
+        <!-- Success Alert -->
+        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="submitSuccess">
+          <i class="bi bi-check-circle-fill me-2"></i>
+          <strong>Success!</strong> Your registration has been submitted successfully.
+          <button type="button" class="btn-close" (click)="submitSuccess = false"></button>
+        </div>
+
+        <!-- Error Alert -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="submitError">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>
+          <strong>Error!</strong> {{ errorMessage }}
+          <button type="button" class="btn-close" (click)="submitError = false"></button>
+          
+          <!-- Validation Errors -->
+          <ul class="mb-0 mt-2" *ngIf="validationErrors.length > 0">
+            <li *ngFor="let error of validationErrors">
+              <strong>{{ error.field }}:</strong> {{ error.message }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="card shadow-sm">
+          <div class="card-body p-4">
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+              
+              <!-- Name Field -->
+              <div class="mb-3">
+                <label for="name" class="form-label fw-semibold">
+                  <i class="bi bi-person me-1"></i>Full Name <span class="text-danger">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="name" 
+                  formControlName="name"
+                  placeholder="Enter your full name"
+                  [class.is-invalid]="hasError('name', 'required') || hasError('name', 'pattern') || hasError('name', 'minlength')">
+                <div class="invalid-feedback" *ngIf="getErrorMessage('name')">
+                  {{ getErrorMessage('name') }}
+                </div>
+                <small class="form-text text-muted">Only letters, spaces, dots, hyphens, and apostrophes allowed</small>
+              </div>
+
+              <!-- Designation Field -->
+              <div class="mb-3">
+                <label for="designation" class="form-label fw-semibold">
+                  <i class="bi bi-briefcase me-1"></i>Designation <span class="text-danger">*</span>
+                </label>
+                <select 
+                  class="form-select" 
+                  id="designation" 
+                  formControlName="designation"
+                  [class.is-invalid]="hasError('designation', 'required')">
+                  <option value="" disabled selected>Select your designation</option>
+                  <option *ngFor="let designation of designations" [value]="designation">
+                    {{ designation }}
+                  </option>
+                </select>
+                <div class="invalid-feedback" *ngIf="getErrorMessage('designation')">
+                  {{ getErrorMessage('designation') }}
+                </div>
+              </div>
+
+              <!-- Course Field -->
+              <div class="mb-3">
+                <label for="course" class="form-label fw-semibold">
+                  <i class="bi bi-book me-1"></i>Course <span class="text-danger">*</span>
+                </label>
+                <select 
+                  class="form-select" 
+                  id="course" 
+                  formControlName="course"
+                  [class.is-invalid]="hasError('course', 'required')">
+                  <option value="" disabled selected>Select a course</option>
+                  <optgroup label="Python">
+                    <option value="Python Basics">Python Basics</option>
+                    <option value="Django">Django</option>
+                    <option value="Flask">Flask</option>
+                    <option value="Data Science">Data Science</option>
+                  </optgroup>
+                  <optgroup label="Java">
+                    <option value="Core Java">Core Java</option>
+                    <option value="Advanced Java">Advanced Java</option>
+                    <option value="Spring Framework">Spring Framework</option>
+                    <option value="Hibernate">Hibernate</option>
+                  </optgroup>
+                  <optgroup label="Web Development">
+                    <option value="HTML & CSS">HTML & CSS</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Angular">Angular</option>
+                    <option value="React">React</option>
+                  </optgroup>
+                  <optgroup label="Full Stack">
+                    <option value=".NET Core">.NET Core</option>
+                    <option value="MEAN Stack">MEAN Stack</option>
+                    <option value="MERN Stack">MERN Stack</option>
+                  </optgroup>
+                </select>
+                <div class="invalid-feedback" *ngIf="getErrorMessage('course')">
+                  {{ getErrorMessage('course') }}
+                </div>
+              </div>
+
+              <!-- Location Field -->
+              <div class="mb-4">
+                <label for="location" class="form-label fw-semibold">
+                  <i class="bi bi-geo-alt me-1"></i>Location <span class="text-danger">*</span>
+                </label>
+                <select 
+                  class="form-select" 
+                  id="location" 
+                  formControlName="location"
+                  [class.is-invalid]="hasError('location', 'required')">
+                  <option value="" disabled selected>Select your location</option>
+                  <optgroup label="United States">
+                    <option *ngFor="let loc of locations.slice(0, 10)" [value]="loc">{{ loc }}</option>
+                  </optgroup>
+                  <optgroup label="India">
+                    <option *ngFor="let loc of locations.slice(10, 17)" [value]="loc">{{ loc }}</option>
+                  </optgroup>
+                  <optgroup label="International">
+                    <option *ngFor="let loc of locations.slice(17)" [value]="loc">{{ loc }}</option>
+                  </optgroup>
+                </select>
+                <div class="invalid-feedback" *ngIf="getErrorMessage('location')">
+                  {{ getErrorMessage('location') }}
+                </div>
+              </div>
+
+              <!-- Submit Buttons -->
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button 
+                  type="button" 
+                  class="btn btn-outline-secondary"
+                  (click)="resetForm()"
+                  [disabled]="isSubmitting">
+                  <i class="bi bi-x-circle me-1"></i>Reset
+                </button>
+                <button 
+                  type="submit" 
+                  class="btn btn-primary"
+                  [disabled]="isSubmitting || registrationForm.invalid">
+                  <span *ngIf="!isSubmitting">
+                    <i class="bi bi-check-circle me-1"></i>Submit Registration
+                  </span>
+                  <span *ngIf="isSubmitting">
+                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                    Submitting...
+                  </span>
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- Info Box -->
+        <div class="alert alert-info mt-4" role="alert">
+          <i class="bi bi-info-circle me-2"></i>
+          <strong>Note:</strong> All fields marked with <span class="text-danger">*</span> are required. 
+          After successful registration, you will receive a confirmation.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

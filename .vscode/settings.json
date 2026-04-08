@@ -1,0 +1,18 @@
+{
+  "github.copilot.chat.mcp.enabled": true,
+  "github.copilot.chat.mcp.servers": {
+    "mysql": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\MuskanShori\\AppData\\Roaming\\npm\\node_modules\\@berthojoris\\mcp-mysql-server\\bin\\mcp-mysql.js"
+      ],
+      "env": {
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "root",
+        "MYSQL_PASSWORD": "root",
+        "MYSQL_DATABASE": "mysqldb"
+      }
+    }
+  }
+}
