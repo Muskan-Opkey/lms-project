@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistrationService } from '../../services/registration.service';
+import { EmailService } from '../../services/email.service';
 import { Registration } from '../../models/registration.model';
 
 @Component({
@@ -15,6 +16,7 @@ export class RegistrationComponent implements OnInit {
   submitError = false;
   errorMessage = '';
   validationErrors: any[] = [];
+  emailSentTo = ''; // Track which email address received confirmation
 
   // Course options
   courses = [
@@ -77,7 +79,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private registrationService: RegistrationService
+    private registrationService: RegistrationService,
+    private emailService: EmailService
   ) { }
 
   ngOnInit(): void {
@@ -94,6 +97,11 @@ export class RegistrationComponent implements OnInit {
         Validators.minLength(2),
         Validators.maxLength(255),
         Validators.pattern(/^[a-zA-Z\s.'-]+$/)
+      ]],
+      email: ['', [
+        Validators.required,
+        Validators.email,
+        Validators.maxLength(255)
       ]],
       designation: ['', [
         Validators.required,
@@ -137,10 +145,31 @@ export class RegistrationComponent implements OnInit {
 
     // Submit to backend
     this.registrationService.createRegistration(registration).subscribe({
-      next: (response) => {
+      next: async (response) => {
         console.log('Registration successful:', response);
         this.isSubmitting = false;
         this.submitSuccess = true;
+        this.emailSentTo = registration.email;
+
+        // Send confirmation email to user
+        try {
+          console.log('📧 Attempting to send email to:', registration.email);
+          const emailSent = await this.emailService.sendRegistrationEmail(registration, registration.email);
+          if (emailSent) {
+            console.log('✅ SUCCESS! Confirmation email sent to:', registration.email);
+            console.log('📬 Check your inbox at:', registration.email);
+            alert(`✅ Registration successful!\n\n📧 Confirmation email sent to:\n${registration.email}\n\nPlease check your inbox (and spam folder).`);
+          } else {
+            console.log('⚠️ Email sending failed, but registration was successful');
+            alert(`✅ Registration successful!\n\n⚠️ But email could not be sent.\nPlease configure EmailJS credentials in email.service.ts`);
+          }
+        } catch (emailError: any) {
+          console.error('❌ Error sending email:', emailError);
+          console.log('💡 Please configure EmailJS credentials in email.service.ts');
+          console.log('Error details:', emailError.message || emailError);
+          alert(`✅ Registration successful!\n\n❌ Email Error: ${emailError.text || emailError.message || 'EmailJS not configured'}\n\nConfigure EmailJS in email.service.ts to enable emails.`);
+        }
+
         this.registrationForm.reset();
 
         // Hide success message after 5 seconds
@@ -205,6 +234,9 @@ export class RegistrationComponent implements OnInit {
     if (field.hasError('pattern')) {
       return `${this.getFieldLabel(fieldName)} contains invalid characters`;
     }
+    if (field.hasError('email')) {
+      return 'Please enter a valid email address';
+    }
 
     return '';
   }
@@ -215,6 +247,7 @@ export class RegistrationComponent implements OnInit {
   private getFieldLabel(fieldName: string): string {
     const labels: { [key: string]: string } = {
       name: 'Name',
+      email: 'Email',
       designation: 'Designation',
       course: 'Course',
       location: 'Location'

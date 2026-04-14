@@ -35,6 +35,7 @@ const initializeDatabase = async () => {
     CREATE TABLE IF NOT EXISTS mysqlTable (
       id INT AUTO_INCREMENT PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL,
       designation VARCHAR(255) NOT NULL,
       course VARCHAR(255) NOT NULL,
       location VARCHAR(255) NOT NULL,
@@ -99,6 +100,29 @@ const initializeDatabase = async () => {
     }
     
     logger.info('Database indexes created successfully');
+    
+    // Add email column migration (for existing tables)
+    try {
+      const checkColumnQuery = `
+        SELECT COUNT(*) as count 
+        FROM INFORMATION_SCHEMA.COLUMNS 
+        WHERE TABLE_SCHEMA = '${process.env.DB_NAME || 'mysqldb'}'
+        AND TABLE_NAME = 'mysqlTable' 
+        AND COLUMN_NAME = 'email'
+      `;
+      const [checkResult] = await pool.query(checkColumnQuery);
+      
+      if (checkResult[0].count === 0) {
+        const addEmailColumnQuery = `
+          ALTER TABLE mysqlTable 
+          ADD COLUMN email VARCHAR(255) NOT NULL DEFAULT 'pending@registration.com' AFTER name
+        `;
+        await pool.query(addEmailColumnQuery);
+        logger.info('Email column added to registration table successfully');
+      }
+    } catch (err) {
+      logger.warn('Email column migration warning:', err.message);
+    }
   } catch (error) {
     logger.error('Database initialization failed:', error.message);
     throw error;

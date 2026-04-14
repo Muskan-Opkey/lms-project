@@ -7,17 +7,17 @@ const logger = require('../config/logger');
  */
 const createRegistration = async (req, res, next) => {
   try {
-    const { name, designation, course, location } = req.body;
+    const { name, email, designation, course, location } = req.body;
 
-    logger.info('Creating new registration:', { name, designation, course, location });
+    logger.info('Creating new registration:', { name, email, designation, course, location });
 
     // Insert into database
     const insertQuery = `
-      INSERT INTO mysqlTable (name, designation, course, location)
-      VALUES (?, ?, ?, ?)
+      INSERT INTO mysqlTable (name, email, designation, course, location)
+      VALUES (?, ?, ?, ?, ?)
     `;
 
-    const result = await query(insertQuery, [name, designation, course, location]);
+    const result = await query(insertQuery, [name, email, designation, course, location]);
     
     // Get the inserted record
     const selectQuery = 'SELECT * FROM mysqlTable WHERE id = ?';
@@ -32,6 +32,7 @@ const createRegistration = async (req, res, next) => {
       data: {
         id: registration.id,
         name: registration.name,
+        email: registration.email,
         designation: registration.designation,
         course: registration.course,
         location: registration.location,
@@ -133,17 +134,17 @@ const getRegistrationById = async (req, res, next) => {
 const updateRegistration = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { name, designation, course, location } = req.body;
+    const { name, email, designation, course, location } = req.body;
 
-    logger.info('Updating registration:', { id, name, designation, course, location });
+    logger.info('Updating registration:', { id, name, email, designation, course, location });
 
     const updateQuery = `
       UPDATE mysqlTable
-      SET name = ?, designation = ?, course = ?, location = ?, updated_at = CURRENT_TIMESTAMP
+      SET name = ?, email = ?, designation = ?, course = ?, location = ?, updated_at = CURRENT_TIMESTAMP
       WHERE id = ?
     `;
 
-    const result = await query(updateQuery, [name, designation, course, location, id]);
+    const result = await query(updateQuery, [name, email, designation, course, location, id]);
 
     // Check if record was updated
     if (result.rows.affectedRows === 0) {

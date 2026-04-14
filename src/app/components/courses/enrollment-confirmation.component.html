@@ -1,0 +1,172 @@
+<!-- Enrollment Confirmation Page -->
+<section class="py-5 bg-slate-50" style="background-color: #f8fafc; min-height: 100vh; font-family: 'Satoshi', Arial, sans-serif;">
+  <div class="container">
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-success bg-opacity-25 mb-3 animate__animated animate__tada" style="width: 72px; height: 72px;">
+        <iconify-icon icon="lucide:party-popper" width="40" class="text-success animate__bounceIn"></iconify-icon>
+      </span>
+      <h1 class="display-4 fw-black mb-2">You're officially enrolled!</h1>
+      <p class="lead text-slate-400">A confirmation email has been sent to your inbox with all the details.</p>
+    </div>
+    <div class="row g-5">
+      <!-- Left Column -->
+      <div class="col-lg-8">
+        <!-- Enrollment Summary Card -->
+        <div class="card rounded-4 shadow-lg mb-4 p-4 d-flex flex-row align-items-center gap-4 flex-wrap flex-lg-nowrap">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Course Thumbnail" class="rounded-4" style="width: 140px; min-width: 120px; object-fit: cover;">
+          <div class="row flex-grow-1 w-100 g-3">
+            <div class="col-md-6 col-lg-4">
+              <div class="fw-bold fs-5">Fullstack Web Development Bootcamp</div>
+            </div>
+            <div class="col-md-6 col-lg-4 d-flex align-items-center gap-2">
+              <img src="https://i.pravatar.cc/100?u=alex" alt="Alex Rivera" class="rounded-circle border border-2 border-primary" width="36">
+              <span>Alex Rivera</span>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <span class="text-muted">Enrollment Date:</span> <span>October 24, 2024</span>
+            </div>
+            <div class="col-md-6 col-lg-4 d-flex align-items-center gap-2">
+              <span class="bg-success rounded-circle d-inline-block" style="width: 10px; height: 10px;"></span>
+              <span class="text-success">Full Lifetime Access</span>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <span class="text-muted">Progress:</span> <span>0% Complete</span>
+            </div>
+          </div>
+        </div>
+        <!-- Curriculum Preview -->
+        <div class="mb-4">
+          <h4 class="fw-bold mb-3">Curriculum Preview</h4>
+          <div class="accordion" id="curriculumPreview">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="module1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseModule1" aria-expanded="true" aria-controls="collapseModule1">
+                  1. Getting Started <span class="ms-2 text-muted small">(5 lessons, 45m)</span>
+                </button>
+              </h2>
+              <div id="collapseModule1" class="accordion-collapse collapse show" aria-labelledby="module1" data-bs-parent="#curriculumPreview">
+                <div class="accordion-body">
+                  <ul class="mb-0 ps-3">
+                    <li>Welcome & Orientation</li>
+                    <li>Course Overview</li>
+                    <li>Setting Up Your Environment</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="module2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseModule2" aria-expanded="false" aria-controls="collapseModule2">
+                  2. Frontend Fundamentals <span class="ms-2 text-muted small">(8 lessons, 2h 10m)</span>
+                </button>
+              </h2>
+              <div id="collapseModule2" class="accordion-collapse collapse" aria-labelledby="module2" data-bs-parent="#curriculumPreview">
+                <div class="accordion-body">
+                  <ul class="mb-0 ps-3">
+                    <li>HTML & CSS Basics</li>
+                    <li>JavaScript Essentials</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="module3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseModule3" aria-expanded="false" aria-controls="collapseModule3">
+                  3. Backend & Deployment <span class="ms-2 text-muted small">(6 lessons, 1h 30m)</span>
+                </button>
+              </h2>
+              <div id="collapseModule3" class="accordion-collapse collapse" aria-labelledby="module3" data-bs-parent="#curriculumPreview">
+                <div class="accordion-body">
+                  <ul class="mb-0 ps-3">
+                    <li>Node.js & Express</li>
+                    <li>Database Integration</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Next Steps Section -->
+        <div class="rounded-4 p-4 mb-4" style="background: linear-gradient(90deg, #0369a1 0%, #0ea5e9 100%); color: #fff;">
+          <h4 class="fw-bold mb-3">Next Steps</h4>
+          <div class="row g-4 mb-3">
+            <div class="col-md-4 d-flex flex-column align-items-center">
+              <span class="bg-white bg-opacity-25 rounded-circle p-3 mb-2"><iconify-icon icon="lucide:calendar" width="28"></iconify-icon></span>
+              <span class="fw-semibold">1. Set a Schedule</span>
+            </div>
+            <div class="col-md-4 d-flex flex-column align-items-center">
+              <span class="bg-white bg-opacity-25 rounded-circle p-3 mb-2"><iconify-icon icon="lucide:users" width="28"></iconify-icon></span>
+              <span class="fw-semibold">2. Join Discord</span>
+            </div>
+            <div class="col-md-4 d-flex flex-column align-items-center">
+              <span class="bg-white bg-opacity-25 rounded-circle p-3 mb-2"><iconify-icon icon="lucide:download" width="28"></iconify-icon></span>
+              <span class="fw-semibold">3. Download Assets</span>
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-light text-primary rounded-pill px-4 fw-bold shadow">Add to Calendar</button>
+          </div>
+        </div>
+        <!-- Resources Section -->
+        <div class="mb-4">
+          <h4 class="fw-bold mb-3">Resources</h4>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <a href="#" class="card rounded-4 shadow-sm p-3 d-flex flex-row align-items-center gap-3 text-decoration-none transition-300 h-100">
+                <iconify-icon icon="lucide:file-text" width="32" class="text-primary"></iconify-icon>
+                <div>
+                  <div class="fw-semibold">Course Syllabus</div>
+                  <div class="text-muted small">PDF, 1.4 MB</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4">
+              <a href="#" class="card rounded-4 shadow-sm p-3 d-flex flex-row align-items-center gap-3 text-decoration-none transition-300 h-100">
+                <iconify-icon icon="lucide:archive" width="32" class="text-primary"></iconify-icon>
+                <div>
+                  <div class="fw-semibold">Source Code</div>
+                  <div class="text-muted small">ZIP, 42 MB</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4">
+              <a href="#" class="card rounded-4 shadow-sm p-3 d-flex flex-row align-items-center gap-3 text-decoration-none transition-300 h-100">
+                <iconify-icon icon="lucide:folder" width="32" class="text-primary"></iconify-icon>
+                <div>
+                  <div class="fw-semibold">Reading Materials</div>
+                  <div class="text-muted small">Folder, 12 Files</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right Sidebar -->
+      <div class="col-lg-4">
+        <!-- Action Buttons -->
+        <div class="d-flex flex-column gap-3 mb-4">
+          <a href="#" class="btn btn-primary btn-lg rounded-pill d-flex align-items-center justify-content-center gap-2 shadow"><iconify-icon icon="lucide:play-circle"></iconify-icon>Start Learning Now</a>
+          <a href="#" class="btn btn-dark btn-lg rounded-pill d-flex align-items-center justify-content-center gap-2 shadow"><iconify-icon icon="lucide:layout-dashboard"></iconify-icon>Go to Dashboard</a>
+        </div>
+        <!-- Support Card -->
+        <div class="card rounded-4 shadow-lg mb-4 p-4 text-white" style="background: linear-gradient(90deg, #0369a1 0%, #0ea5e9 100%);">
+          <h5 class="fw-bold mb-2">Need Help?</h5>
+          <p class="mb-3">Our support team is here for you 24/7. Reach out if you have any questions or need assistance.</p>
+          <a href="#" class="btn btn-light text-primary rounded-pill px-4 fw-bold">Contact Support</a>
+        </div>
+        <!-- Pro Tip Toast -->
+        <div class="toast show position-fixed bottom-0 end-0 mb-4 me-4 shadow-lg animate__animated animate__bounceIn" role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999; min-width: 320px;">
+          <div class="toast-header bg-primary text-white rounded-top-4">
+            <iconify-icon icon="lucide:info" class="me-2"></iconify-icon>
+            <strong class="me-auto">Pro Tip!</strong>
+            <button type="button" class="btn-close btn-close-white ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Download our mobile app to learn on the go and track your progress anywhere!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

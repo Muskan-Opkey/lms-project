@@ -15,6 +15,10 @@
         <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="submitSuccess">
           <i class="bi bi-check-circle-fill me-2"></i>
           <strong>Success!</strong> Your registration has been submitted successfully.
+          <br><small class="mt-2 d-block" *ngIf="emailSentTo">
+            ✉️ Confirmation email sent to: <strong>{{ emailSentTo }}</strong>
+            <br>📬 Please check your inbox (and spam/junk folder if needed).
+          </small>
           <button type="button" class="btn-close" (click)="submitSuccess = false"></button>
         </div>
 
@@ -53,6 +57,24 @@
                   {{ getErrorMessage('name') }}
                 </div>
                 <small class="form-text text-muted">Only letters, spaces, dots, hyphens, and apostrophes allowed</small>
+              </div>
+
+              <!-- Email Field -->
+              <div class="mb-3">
+                <label for="email" class="form-label fw-semibold">
+                  <i class="bi bi-envelope me-1"></i>Email Address <span class="text-danger">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  class="form-control" 
+                  id="email" 
+                  formControlName="email"
+                  placeholder="Enter your email address"
+                  [class.is-invalid]="hasError('email', 'required') || hasError('email', 'email')">
+                <div class="invalid-feedback" *ngIf="getErrorMessage('email')">
+                  {{ getErrorMessage('email') }}
+                </div>
+                <small class="form-text text-muted">We'll send confirmation details to this email</small>
               </div>
 
               <!-- Designation Field -->

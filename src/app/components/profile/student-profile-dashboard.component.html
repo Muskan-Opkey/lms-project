@@ -1,0 +1,191 @@
+<!-- Student Profile Dashboard (Bootstrap + Satoshi + Iconify) -->
+<section class="bg-dark text-white py-5" style="background-color: #0f172a; font-family: 'Satoshi', Arial, sans-serif;">
+  <div class="container">
+    <!-- Header -->
+    <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-4 mb-5">
+      <div class="d-flex align-items-center gap-4">
+        <div class="position-relative">
+          <img src="https://i.pravatar.cc/100?u=profile" alt="User Avatar" class="rounded-circle border border-3 border-primary" width="96" height="96">
+          <button class="btn btn-light btn-sm rounded-circle position-absolute bottom-0 end-0 shadow" style="transform: translate(25%, 25%);">
+            <iconify-icon icon="lucide:pencil" width="18"></iconify-icon>
+          </button>
+        </div>
+        <div>
+          <h1 class="display-5 fw-black mb-1">Priya Sharma</h1>
+          <div class="text-slate-400 mb-2">Fullstack Developer & Lifelong Learner</div>
+          <div class="d-flex flex-wrap gap-3 align-items-center mb-2">
+            <span class="d-flex align-items-center gap-1"><iconify-icon icon="lucide:map-pin" class="text-primary"></iconify-icon>New Delhi, India</span>
+            <span class="d-flex align-items-center gap-1"><iconify-icon icon="lucide:calendar" class="text-primary"></iconify-icon>Joined Jan 2023</span>
+            <a href="https://portfolio.example.com" target="_blank" class="d-flex align-items-center gap-1 text-blue-600"><iconify-icon icon="lucide:globe"></iconify-icon>Portfolio</a>
+          </div>
+          <a href="#" class="btn btn-primary rounded-pill px-4 fw-semibold">Edit Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="row g-5">
+      <!-- Left Sidebar -->
+      <div class="col-lg-3">
+        <div class="card rounded-4 shadow-sm mb-4">
+          <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action active bg-primary text-white rounded-top-4 d-flex align-items-center gap-2"><iconify-icon icon="lucide:layout-dashboard"></iconify-icon>Overview</a>
+            <a href="https://draft-86e1814d-1441-464f-aee4-80d0c0c321ba.preview.superdesign.dev" class="list-group-item list-group-item-action d-flex align-items-center gap-2"><iconify-icon icon="lucide:book-open"></iconify-icon>My Courses</a>
+            <a href="#" class="list-group-item list-group-item-action d-flex align-items-center gap-2"><iconify-icon icon="lucide:award"></iconify-icon>Certificates</a>
+            <a href="#" class="list-group-item list-group-item-action d-flex align-items-center gap-2 position-relative"><iconify-icon icon="lucide:mail"></iconify-icon>Messages <span class="badge bg-danger position-absolute end-0 me-3">3</span></a>
+            <a href="#" class="list-group-item list-group-item-action rounded-bottom-4 d-flex align-items-center gap-2"><iconify-icon icon="lucide:settings"></iconify-icon>Settings</a>
+          </div>
+        </div>
+        <!-- Upgrade Card -->
+        <div class="card rounded-4 shadow-lg text-white mb-4" style="background: linear-gradient(90deg, #0369a1 0%, #0ea5e9 100%);">
+          <div class="card-body d-flex flex-column align-items-center text-center">
+            <iconify-icon icon="lucide:rocket" width="36" class="mb-2"></iconify-icon>
+            <h5 class="fw-bold mb-2">Upgrade to Pro</h5>
+            <p class="mb-3">Unlock unlimited courses, priority support, and exclusive resources.</p>
+            <a href="#" class="btn btn-light text-primary rounded-pill px-4 fw-bold">Upgrade Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <div class="col-lg-9">
+        <!-- Stats Grid -->
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-md-3">
+            <div class="card rounded-4 shadow-sm p-3 d-flex flex-column align-items-center">
+              <iconify-icon icon="lucide:check-circle" width="32" class="text-primary mb-2"></iconify-icon>
+              <div class="fw-bold fs-4">12</div>
+              <div class="text-slate-400">Completed</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="card rounded-4 shadow-sm p-3 d-flex flex-column align-items-center">
+              <iconify-icon icon="lucide:award" width="32" class="text-warning mb-2"></iconify-icon>
+              <div class="fw-bold fs-4">08</div>
+              <div class="text-slate-400">Certificates</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="card rounded-4 shadow-sm p-3 d-flex flex-column align-items-center">
+              <iconify-icon icon="lucide:clock" width="32" class="text-success mb-2"></iconify-icon>
+              <div class="fw-bold fs-4">145</div>
+              <div class="text-slate-400">Total Hours</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="card rounded-4 shadow-sm p-3 d-flex flex-column align-items-center">
+              <iconify-icon icon="lucide:flame" width="32" class="text-danger mb-2"></iconify-icon>
+              <div class="fw-bold fs-4">15</div>
+              <div class="text-slate-400">Day Streak</div>
+            </div>
+          </div>
+        </div>
+        <!-- Enrolled Courses Section -->
+        <div class="mb-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="fw-bold mb-0">Enrolled Courses</h4>
+            <a href="https://draft-86e1814d-1441-464f-aee4-80d0c0c321ba.preview.superdesign.dev" class="text-blue-600 fw-semibold">View All</a>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card rounded-4 shadow-sm d-flex flex-row align-items-center gap-3 p-3">
+                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" alt="Course 1" class="rounded-3" style="width: 90px; object-fit: cover;">
+                <div class="flex-grow-1">
+                  <span class="badge bg-primary mb-1">Web Dev</span>
+                  <span class="badge bg-success mb-1 ms-2">75% Complete</span>
+                  <h6 class="fw-bold mb-1">Fullstack Web Development Bootcamp</h6>
+                  <div class="progress rounded-pill" style="height: 8px;">
+                    <div class="progress-bar bg-primary" style="width: 75%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card rounded-4 shadow-sm d-flex flex-row align-items-center gap-3 p-3">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Course 2" class="rounded-3" style="width: 90px; object-fit: cover;">
+                <div class="flex-grow-1">
+                  <span class="badge bg-secondary mb-1">Data Science</span>
+                  <span class="badge bg-purple mb-1 ms-2" style="background-color: #a78bfa; color: #fff;">40% Complete</span>
+                  <h6 class="fw-bold mb-1">Python for Data Science</h6>
+                  <div class="progress rounded-pill" style="height: 8px;">
+                    <div class="progress-bar" style="width: 40%; background-color: #a78bfa;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Certificates Section -->
+        <div class="mb-5">
+          <h4 class="fw-bold mb-3">Recent Certificates</h4>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div class="position-relative card rounded-4 shadow-sm overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" alt="Certificate 1" class="img-fluid">
+                <div class="position-absolute top-0 end-0 m-2 d-none d-md-block" style="opacity: 0; transition: opacity 0.3s;"><iconify-icon icon="lucide:eye" width="24" class="text-white"></iconify-icon></div>
+                <div class="p-2">
+                  <div class="fw-bold">Web Dev Mastery</div>
+                  <div class="text-slate-400 small">Issued Mar 2026</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="position-relative card rounded-4 shadow-sm overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" alt="Certificate 2" class="img-fluid">
+                <div class="position-absolute top-0 end-0 m-2 d-none d-md-block" style="opacity: 0; transition: opacity 0.3s;"><iconify-icon icon="lucide:eye" width="24" class="text-white"></iconify-icon></div>
+                <div class="p-2">
+                  <div class="fw-bold">Data Science Pro</div>
+                  <div class="text-slate-400 small">Issued Feb 2026</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="position-relative card rounded-4 shadow-sm overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Certificate 3" class="img-fluid">
+                <div class="position-absolute top-0 end-0 m-2 d-none d-md-block" style="opacity: 0; transition: opacity 0.3s;"><iconify-icon icon="lucide:eye" width="24" class="text-white"></iconify-icon></div>
+                <div class="p-2">
+                  <div class="fw-bold">Python Expert</div>
+                  <div class="text-slate-400 small">Issued Jan 2026</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Account Settings Section -->
+        <div class="card rounded-4 shadow-lg p-4 mb-5">
+          <div class="row g-4">
+            <!-- Personal Info -->
+            <div class="col-md-6">
+              <h5 class="fw-bold mb-3"><iconify-icon icon="lucide:user" class="me-2"></iconify-icon>Personal Information</h5>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control rounded-pill" id="email" value="priya.sharma@email.com">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control rounded-pill" id="password" value="********">
+              </div>
+              <button class="btn btn-primary rounded-pill px-4 fw-bold">Update Details</button>
+            </div>
+            <!-- Notification Preferences -->
+            <div class="col-md-6">
+              <h5 class="fw-bold mb-3"><iconify-icon icon="lucide:bell" class="me-2"></iconify-icon>Notification Preferences</h5>
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" id="courseUpdates" checked>
+                <label class="form-check-label" for="courseUpdates">Course Updates</label>
+                <div class="text-slate-400 small">Get notified about new lessons and announcements.</div>
+              </div>
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" id="emailMarketing">
+                <label class="form-check-label" for="emailMarketing">Email Marketing</label>
+                <div class="text-slate-400 small">Receive special offers and promotions.</div>
+              </div>
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" id="publicProfile" checked>
+                <label class="form-check-label" for="publicProfile">Public Profile</label>
+                <div class="text-slate-400 small">Allow others to view your profile and achievements.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

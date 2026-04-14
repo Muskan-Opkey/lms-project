@@ -13,6 +13,16 @@ const registrationValidationRules = () => {
       .notEmpty()
       .withMessage('Name is required'),
 
+    body('email')
+      .trim()
+      .isEmail()
+      .withMessage('Please provide a valid email address')
+      .isLength({ max: 255 })
+      .withMessage('Email must not exceed 255 characters')
+      .normalizeEmail()
+      .notEmpty()
+      .withMessage('Email is required'),
+
     body('designation')
       .trim()
       .isLength({ min: 2, max: 255 })

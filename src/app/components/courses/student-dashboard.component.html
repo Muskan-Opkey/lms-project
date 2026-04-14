@@ -1,0 +1,255 @@
+<!-- Student Course Dashboard -->
+<section class="bg-dark text-white py-5" style="background-color: #0f172a; font-family: 'Satoshi', Arial, sans-serif;">
+  <div class="container">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+      <ol class="breadcrumb bg-transparent p-0 mb-0">
+        <li class="breadcrumb-item"><a routerLink="/my-courses" class="text-blue-600">My Courses</a></li>
+        <li class="breadcrumb-item active text-white" aria-current="page">Fullstack Web Development Bootcamp</li>
+      </ol>
+    </nav>
+    <!-- Header -->
+    <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-4">
+      <div>
+        <h1 class="display-5 fw-black mb-2">Fullstack Web Development Bootcamp</h1>
+        <div class="d-flex flex-wrap gap-3 align-items-center">
+          <span class="text-slate-400">Alex Rivera</span>
+          <span class="text-slate-400"><iconify-icon icon="lucide:clock" class="me-1"></iconify-icon>22h 45m</span>
+          <span class="badge bg-success bg-opacity-75"><iconify-icon icon="lucide:award" class="me-1"></iconify-icon>Certificate</span>
+        </div>
+      </div>
+      <!-- Circular Progress -->
+      <div class="d-flex flex-column align-items-center gap-2">
+        <svg width="90" height="90" viewBox="0 0 90 90">
+          <circle cx="45" cy="45" r="40" stroke="#e5e7eb" stroke-width="8" fill="none"/>
+          <circle cx="45" cy="45" r="40" stroke="#0369a1" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="88" stroke-linecap="round"/>
+        </svg>
+        <div class="fw-bold fs-5">65% Complete</div>
+        <div class="text-slate-400 small">18/28 lessons</div>
+        <a href="#" class="btn btn-primary rounded-pill px-4 fw-semibold mt-2"><iconify-icon icon="lucide:play-circle" class="me-1"></iconify-icon>Resume Learning</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-slate-50" style="background-color: #f8fafc;">
+  <div class="container">
+    <div class="row g-5">
+      <!-- Left Column -->
+      <div class="col-lg-8">
+        <!-- Video Lessons Section -->
+        <div class="mb-5">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="badge bg-primary bg-opacity-10 text-primary">Latest Upload: 2 days ago</span>
+            <h4 class="fw-bold mb-0">Video Lessons</h4>
+          </div>
+          <div class="row g-3">
+            <!-- Completed Lesson -->
+            <div class="col-md-4">
+              <div class="card rounded-4 shadow-sm p-3 d-flex flex-column align-items-center gap-2 border border-success border-2">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Lesson 1" class="rounded-3 mb-2" style="width: 100%; aspect-ratio: 16/10; object-fit: cover;">
+                <div class="d-flex align-items-center gap-2">
+                  <iconify-icon icon="lucide:check-circle" class="text-success"></iconify-icon>
+                  <span class="fw-semibold">HTML & CSS Basics</span>
+                </div>
+                <div class="text-slate-400 small">18m • Web Dev</div>
+                <a href="#" class="btn btn-outline-success btn-sm rounded-pill mt-2"><iconify-icon icon="lucide:rotate-ccw"></iconify-icon>Replay</a>
+              </div>
+            </div>
+            <!-- Current/Next Up Lesson -->
+            <div class="col-md-4">
+              <div class="card rounded-4 shadow-lg p-3 d-flex flex-column align-items-center gap-2 border border-primary border-2">
+                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" alt="Lesson 2" class="rounded-3 mb-2" style="width: 100%; aspect-ratio: 16/10; object-fit: cover;">
+                <div class="d-flex align-items-center gap-2">
+                  <iconify-icon icon="lucide:play-circle" class="text-primary"></iconify-icon>
+                  <span class="fw-semibold">JavaScript Essentials</span>
+                </div>
+                <div class="text-slate-400 small">22m • Web Dev</div>
+                <a href="#" class="btn btn-primary btn-sm rounded-pill mt-2">Start Lesson</a>
+              </div>
+            </div>
+            <!-- Locked Lesson -->
+            <div class="col-md-4">
+              <div class="card rounded-4 shadow-sm p-3 d-flex flex-column align-items-center gap-2 border border-2 border-light-subtle" style="opacity: 0.6;">
+                <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" alt="Lesson 3" class="rounded-3 mb-2" style="width: 100%; aspect-ratio: 16/10; object-fit: cover;">
+                <div class="d-flex align-items-center gap-2">
+                  <iconify-icon icon="lucide:lock" class="text-muted"></iconify-icon>
+                  <span class="fw-semibold text-muted">React Fundamentals</span>
+                </div>
+                <div class="text-slate-400 small">30m • Web Dev</div>
+                <button class="btn btn-outline-secondary btn-sm rounded-pill mt-2" disabled>Locked</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Assignments Section -->
+        <div class="mb-5">
+          <h4 class="fw-bold mb-3">Assignments</h4>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle rounded-4 overflow-hidden">
+              <thead class="table-light">
+                <tr>
+                  <th>Task Name</th>
+                  <th>Deadline</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>HTML/CSS Project</td>
+                  <td>Apr 10, 2026</td>
+                  <td><span class="badge bg-success">Completed</span></td>
+                  <td><a href="#" class="btn btn-outline-success btn-sm rounded-pill">View Result</a></td>
+                </tr>
+                <tr>
+                  <td>JavaScript Quiz</td>
+                  <td>Apr 18, 2026</td>
+                  <td><span class="badge bg-primary">Pending</span></td>
+                  <td><a href="#" class="btn btn-primary btn-sm rounded-pill">Start Task</a></td>
+                </tr>
+                <tr>
+                  <td>React Mini App</td>
+                  <td>Apr 20, 2026</td>
+                  <td><span class="badge bg-danger">Due Soon</span></td>
+                  <td><a href="#" class="btn btn-danger btn-sm rounded-pill">Start Task</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- E-Resources Section -->
+        <div class="mb-5">
+          <h4 class="fw-bold mb-3">E-Resources</h4>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <a href="#" class="card rounded-4 shadow-sm p-3 d-flex flex-row align-items-center gap-3 text-decoration-none transition-300 h-100">
+                <iconify-icon icon="lucide:file-text" width="32" class="text-primary"></iconify-icon>
+                <div>
+                  <div class="fw-semibold">Course Syllabus</div>
+                  <div class="text-muted small">PDF, 1.4 MB</div>
+                </div>
+                <iconify-icon icon="lucide:download" width="24" class="ms-auto text-primary"></iconify-icon>
+              </a>
+            </div>
+            <div class="col-md-6">
+              <a href="#" class="card rounded-4 shadow-sm p-3 d-flex flex-row align-items-center gap-3 text-decoration-none transition-300 h-100">
+                <iconify-icon icon="lucide:archive" width="32" class="text-primary"></iconify-icon>
+                <div>
+                  <div class="fw-semibold">Source Code</div>
+                  <div class="text-muted small">ZIP, 42 MB</div>
+                </div>
+                <iconify-icon icon="lucide:download" width="24" class="ms-auto text-primary"></iconify-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right Sidebar -->
+      <div class="col-lg-4">
+        <!-- Course Syllabus Card -->
+        <div class="card rounded-4 shadow-lg mb-4">
+          <div class="card-body">
+            <h5 class="fw-bold mb-3">Course Syllabus</h5>
+            <div class="accordion" id="syllabusAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="syllabus1">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSyllabus1" aria-expanded="true" aria-controls="collapseSyllabus1">
+                    1. Getting Started
+                  </button>
+                </h2>
+                <div id="collapseSyllabus1" class="accordion-collapse collapse show" aria-labelledby="syllabus1" data-bs-parent="#syllabusAccordion">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled mb-0">
+                      <li><iconify-icon icon="lucide:check-circle" class="text-success me-1"></iconify-icon>Welcome & Orientation</li>
+                      <li><iconify-icon icon="lucide:check-circle" class="text-success me-1"></iconify-icon>Course Overview</li>
+                      <li><iconify-icon icon="lucide:check-circle" class="text-success me-1"></iconify-icon>Setting Up Your Environment</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="syllabus2">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSyllabus2" aria-expanded="false" aria-controls="collapseSyllabus2">
+                    2. Frontend Fundamentals
+                  </button>
+                </h2>
+                <div id="collapseSyllabus2" class="accordion-collapse collapse" aria-labelledby="syllabus2" data-bs-parent="#syllabusAccordion">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled mb-0">
+                      <li><iconify-icon icon="lucide:check-circle" class="text-success me-1"></iconify-icon>HTML & CSS Basics</li>
+                      <li><iconify-icon icon="lucide:check-circle" class="text-success me-1"></iconify-icon>JavaScript Essentials</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="syllabus3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSyllabus3" aria-expanded="false" aria-controls="collapseSyllabus3">
+                    3. Backend & Deployment
+                  </button>
+                </h2>
+                <div id="collapseSyllabus3" class="accordion-collapse collapse" aria-labelledby="syllabus3" data-bs-parent="#syllabusAccordion">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled mb-0">
+                      <li><iconify-icon icon="lucide:check-circle" class="text-success me-1"></iconify-icon>Node.js & Express</li>
+                      <li><iconify-icon icon="lucide:check-circle" class="text-success me-1"></iconify-icon>Database Integration</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Support Card -->
+        <div class="card rounded-4 shadow-lg mb-4 text-white" style="background: linear-gradient(90deg, #0369a1 0%, #0ea5e9 100%);">
+          <div class="card-body">
+            <h5 class="fw-bold mb-2">Need Help?</h5>
+            <a href="#" class="btn btn-light text-primary rounded-pill px-4 fw-bold">Join Student Discord</a>
+          </div>
+        </div>
+        <!-- Recent Reviews Card -->
+        <div class="card rounded-4 shadow-sm mb-4">
+          <div class="card-body">
+            <h5 class="fw-bold mb-3">Recent Reviews</h5>
+            <div class="mb-3">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <img src="https://i.pravatar.cc/100?u=review1" alt="Student 1" class="rounded-circle border border-2 border-primary" width="40">
+                <div>
+                  <div class="fw-bold">Priya Sharma</div>
+                  <div class="d-flex align-items-center gap-1">
+                    <iconify-icon icon="lucide:star" class="text-amber-500"></iconify-icon>
+                    <iconify-icon icon="lucide:star" class="text-amber-500"></iconify-icon>
+                    <iconify-icon icon="lucide:star" class="text-amber-500"></iconify-icon>
+                    <iconify-icon icon="lucide:star" class="text-amber-500"></iconify-icon>
+                    <iconify-icon icon="lucide:star" class="text-amber-500"></iconify-icon>
+                  </div>
+                </div>
+              </div>
+              <div class="text-slate-400 small">This course exceeded my expectations! The instructor explains concepts clearly and the projects are very practical.</div>
+            </div>
+            <div class="mb-3">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <img src="https://i.pravatar.cc/100?u=review2" alt="Student 2" class="rounded-circle border border-2 border-primary" width="40">
+                <div>
+                  <div class="fw-bold">James Lee</div>
+                  <div class="d-flex align-items-center gap-1">
+                    <iconify-icon icon="lucide:star" class="text-amber-500"></iconify-icon>
+                    <iconify-icon icon="lucide:star" class="text-amber-500"></iconify-icon>
+                    <iconify-icon icon="lucide:star" class="text-amber-500"></iconify-icon>
+                    <iconify-icon icon="lucide:star" class="text-amber-500"></iconify-icon>
+                    <iconify-icon icon="lucide:star" class="text-amber-500"></iconify-icon>
+                  </div>
+                </div>
+              </div>
+              <div class="text-slate-400 small">Great content and structure. The curriculum is well-organized and the support from the instructor is top-notch.</div>
+            </div>
+            <div class="text-center mt-2">
+              <a href="#" class="btn btn-outline-primary rounded-pill px-4">Read All 2.5k Reviews</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -2,6 +2,7 @@
 export interface Registration {
   id?: number;
   name: string;
+  email: string;
   designation: string;
   course: string;
   location: string;

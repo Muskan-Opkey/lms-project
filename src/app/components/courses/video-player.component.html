@@ -1,0 +1,50 @@
+<!-- Responsive Video Player (Bootstrap + Satoshi + Iconify) -->
+<section class="py-5 bg-slate-50" style="background-color: #f8fafc; font-family: 'Satoshi', Arial, sans-serif;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <!-- NavigationBar (dark) -->
+        <!-- ...existing navbar component... -->
+        <div class="card rounded-4 shadow-lg p-4 mb-5">
+          <div class="ratio ratio-16x9 mb-4">
+            <video id="lessonVideo" class="w-100 rounded-4 bg-dark" controls poster="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80" style="outline: none;">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <!-- Custom Controls (Bootstrap styled, for demo) -->
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <button class="btn btn-primary rounded-circle"><iconify-icon icon="lucide:play"></iconify-icon></button>
+            <input type="range" class="form-range flex-grow-1" min="0" max="100" value="0">
+            <span class="text-muted small">00:00 / 10:00</span>
+            <button class="btn btn-light rounded-circle"><iconify-icon icon="lucide:volume-2"></iconify-icon></button>
+            <button class="btn btn-light rounded-circle"><iconify-icon icon="lucide:settings"></iconify-icon></button>
+            <button class="btn btn-light rounded-circle"><iconify-icon icon="lucide:expand"></iconify-icon></button>
+          </div>
+          <!-- Transcript Section -->
+          <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="fw-bold mb-0">Transcript</h5>
+              <input type="search" class="form-control w-auto rounded-pill" placeholder="Search transcript...">
+            </div>
+            <div class="bg-light rounded-4 p-3" style="max-height: 220px; overflow-y: auto;">
+              <p class="mb-2"><span class="text-primary">00:01</span> Welcome to the course! In this lesson, we'll cover the basics of HTML and CSS.</p>
+              <p class="mb-2"><span class="text-primary">00:45</span> Let's start by creating a simple web page structure...</p>
+              <p class="mb-2"><span class="text-primary">01:30</span> Now, let's add some styles using CSS classes...</p>
+              <p class="mb-2"><span class="text-primary">02:10</span> You can see the changes live in your browser as you code along.</p>
+            </div>
+          </div>
+          <!-- Links -->
+          <div class="d-flex gap-3">
+            <a href="https://draft-86e1814d-1441-464f-aee4-80d0c0c321ba.preview.superdesign.dev" class="btn btn-outline-primary rounded-pill px-4"><iconify-icon icon="lucide:layout-dashboard"></iconify-icon>Dashboard</a>
+            <a href="https://draft-ab3a4402-4b4e-442e-9073-810632ad0b9e.preview.superdesign.dev" class="btn btn-outline-dark rounded-pill px-4"><iconify-icon icon="lucide:book-open"></iconify-icon>Course Details</a>
+          </div>
+          <!-- Dark theme support hint -->
+          <div class="mt-4 text-muted small">Tip: Switch to dark mode for a more immersive viewing experience.</div>
+        </div>
+        <!-- Footer -->
+        <!-- ...existing footer component... -->
+      </div>
+    </div>
+  </div>
+</section>

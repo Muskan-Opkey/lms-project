@@ -1,6 +1,8 @@
 # Email.js Setup Guide for LMS Platform
 
-This guide will help you configure Email.js to send welcome emails when users sign up.
+This guide will help you configure Email.js to send automated emails for:
+- **Welcome emails** when users sign up
+- **Registration confirmation emails** when users register for courses
 
 ## Prerequisites
 
@@ -22,11 +24,40 @@ This guide will help you configure Email.js to send welcome emails when users si
 5. Follow the setup instructions for your provider
 6. **Copy the Service ID** (you'll need this later)
 
-## Step 3: Create Email Template
+## Step 3: Create Email Templates
+
+You need to create templates for different email types. You can use the same template for both or create separate templates.
+
+### Option A: Single Template (Recommended for Simplicity)
 
 1. Click on **Email Templates** in the left sidebar
 2. Click **Create New Template**
-3. Use the following template structure:
+3. Use the following universal template structure:
+
+```
+Subject: {{subject}}
+
+Hello {{to_name}},
+
+{{message}}
+
+Course Details:
+- Course: {{course}}
+- Designation: {{designation}}
+- Location: {{location}}
+
+Thank you for choosing LMS Platform!
+
+Best regards,
+{{from_name}}
+```
+
+4. **Copy the Template ID** (you'll need this later)
+5. Save the template
+
+### Option B: Separate Templates
+
+#### Template 1: Welcome Email (for Sign Up)
 
 ```
 Subject: Welcome to LMS Platform
@@ -41,8 +72,30 @@ Best regards,
 {{from_name}}
 ```
 
-4. **Copy the Template ID** (you'll need this later)
-5. Save the template
+#### Template 2: Registration Confirmation (for Course Registration)
+
+```
+Subject: Course Registration Confirmation
+
+Hello {{user_name}},
+
+{{message}}
+
+Registration Details:
+━━━━━━━━━━━━━━━━━━━━
+📚 Course: {{course}}
+💼 Designation: {{designation}}
+📍 Location: {{location}}
+
+We're excited to have you in our {{course}} program! Our team will reach out to you shortly with next steps and course materials.
+
+If you have any questions, feel free to contact us.
+
+Best regards,
+LMS Platform Team
+```
+
+**Note**: If using separate templates, copy both Template IDs. You'll configure the registration template ID in the email service.
 
 ## Step 4: Get Your Public Key
 
@@ -72,6 +125,8 @@ private publicKey = 'xK9vL2mN8pQ5rS7t';
 
 ## Step 6: Test the Integration
 
+### Test 1: Sign Up Email
+
 1. Run your Angular application:
    ```bash
    ng serve
@@ -85,17 +140,50 @@ private publicKey = 'xK9vL2mN8pQ5rS7t';
 
 5. Check your email inbox for the welcome message
 
+### Test 2: Registration Confirmation Email
+
+1. Navigate to the Registration page: `http://localhost:4200/registration`
+
+2. Fill in all required fields:
+   - Name
+   - Designation
+   - Course
+   - Location
+
+3. Click **Submit**
+
+4. Check your email inbox for the registration confirmation
+
+**Note**: Registration emails currently use a fallback admin email. To send to the actual registrant, you'll need to add an email field to the registration form.
+
 ## Email Template Variables
 
-The following variables are sent to Email.js from the signup component:
+### Welcome Email Variables (Sign Up)
+
+The following variables are sent from the signup component:
 
 - `{{to_name}}` - User's name from signup form
 - `{{to_email}}` - User's email address
 - `{{from_name}}` - 'LMS Platform' (hardcoded)
 - `{{message}}` - Welcome message text
-- `{{subject}}` - Email subject line
+- `{{subject}}` - 'Welcome to LMS Platform'
+
+### Registration Confirmation Variables (Course Registration)
+
+The following variables are sent from the registration component:
+
+- `{{to_name}}` or `{{user_name}}` - Registrant's name
+- `{{to_email}}` - Email address (currently defaults to admin email)
+- `{{from_name}}` - 'LMS Platform'
+- `{{course}}` - Selected course (e.g., 'Angular', 'Python Basics')
+- `{{designation}}` - User's designation (e.g., 'Student', 'Professional')
+- `{{location}}` - User's location (e.g., 'New York', 'Mumbai')
+- `{{message}}` - Confirmation message with course details
+- `{{subject}}` - 'Course Registration Confirmation'
 
 ## Customizing Email Content
+
+### Customize Welcome Email
 
 To customize the welcome email content, edit the `sendWelcomeEmail` method in `src/app/services/email.service.ts`:
 
@@ -104,10 +192,44 @@ const templateParams = {
   to_name: userName,
   to_email: userEmail,
   from_name: 'LMS Platform',
-  message: `Your custom message here`,
-  subject: 'Your custom subject'
+  message: `Your custom welcome message here`,
+  subject: 'Welcome to LMS Platform'
 };
 ```
+
+### Customize Registration Confirmation Email
+
+To customize the registration confirmation email, edit the `sendRegistrationEmail` method in `src/app/services/email.service.ts`:
+
+```typescript
+const templateParams = {
+  to_name: registration.name,
+  to_email: userEmail || 'admin@lms-platform.com',
+  from_name: 'LMS Platform',
+  user_name: registration.name,
+  course: registration.course,
+  designation: registration.designation,
+  location: registration.location,
+  message: `Your custom registration message here`,
+  subject: 'Course Registration Confirmation'
+};
+```
+
+### Add Email Field to Registration Form (Optional)
+
+To send registration emails to the actual registrant instead of admin:
+
+1. Add email field to the registration form in `registration.component.ts`:
+   ```typescript
+   email: ['', [Validators.required, Validators.email]]
+   ```
+
+2. Update the registration model in `registration.model.ts` to include email
+
+3. Pass the email when calling `sendRegistrationEmail`:
+   ```typescript
+   await this.emailService.sendRegistrationEmail(registration, registration.email);
+   ```
 
 ## Troubleshooting
 
@@ -161,6 +283,37 @@ For production deployment, consider:
 - [Email.js Documentation](https://www.emailjs.com/docs/)
 - [Email.js Dashboard](https://dashboard.emailjs.com/)
 - [Email.js Pricing](https://www.emailjs.com/pricing/)
+
+## Current Email Flow in LMS Platform
+
+### 1. User Sign Up Flow
+- User fills signup form at `/user-management/signup`
+- User data saved to localStorage
+- Welcome email sent via `sendWelcomeEmail()`
+- User redirected to dashboard
+
+### 2. Course Registration Flow
+- User fills registration form at `/registration`
+- Registration data sent to backend (MySQL database)
+- Registration confirmation email sent via `sendRegistrationEmail()`
+- Success message displayed
+- Form resets
+
+### Email Error Handling
+- Email sending is non-blocking (doesn't prevent registration)
+- Errors are logged to console
+- Registration/signup succeeds even if email fails
+- User sees success message regardless of email status
+
+## Future Enhancements
+
+Consider implementing:
+1. **Email Field in Registration**: Add email field to collect registrant's email
+2. **Email Verification**: Send verification links before activating accounts
+3. **Multiple Templates**: Different templates for different courses
+4. **Email Queue**: Queue emails for retry if they fail
+5. **Admin Notifications**: Send copy of registrations to admin
+6. **Email Analytics**: Track open rates and click-through rates
 
 ## Support
 

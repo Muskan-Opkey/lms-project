@@ -1,3 +1,77 @@
+/* --- Satoshi Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;700;900&display=swap');
+
+body, html {
+  font-family: 'Satoshi', Arial, sans-serif;
+}
+
+/* --- Color Palette Variables (Bootstrap override) --- */
+:root {
+  --bs-primary: #0369a1;
+  --bs-body-bg: #f8fafc; /* slate-50 */
+  --bs-body-color: #0f172a; /* slate-900 */
+  --bs-secondary: #38bdf8; /* cyan */
+  --bs-warning: #f59e42; /* amber */
+  --bs-success: #10b981; /* emerald */
+}
+
+/* --- Gradient Backgrounds --- */
+.bg-radial-blue {
+  background: radial-gradient(circle at 80% 0, rgba(30, 58, 138, 0.4) 0%, transparent 70%);
+}
+
+/* --- Gradient Text --- */
+.text-gradient-blue {
+  background: linear-gradient(90deg, #38bdf8 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --- Card Hover Effects --- */
+.card-hover {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.card-hover:hover {
+  box-shadow: 0 1.5rem 3rem rgba(3, 105, 161, 0.12), 0 0.5rem 1rem rgba(0,0,0,0.08);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+/* --- Skeleton Loading Animation --- */
+.skeleton {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e0e7ef 37%, #f1f5f9 63%);
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+}
+@keyframes skeleton-loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* --- Transition Utility --- */
+.transition-300 {
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+/* --- Aspect Ratio Utility --- */
+.aspect-video {
+  aspect-ratio: 16/9;
+}
+
+/* --- Backdrop Blur --- */
+.backdrop-blur {
+  backdrop-filter: blur(12px);
+}
+
+/* --- Responsive Utility for Hiding --- */
+@media (max-width: 767.98px) {
+  .hide-mobile { display: none !important; }
+}
+@media (min-width: 768px) {
+  .show-md { display: block !important; }
+}
 /* Global Styles */
 * {
   margin: 0;

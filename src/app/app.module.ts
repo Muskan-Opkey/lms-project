@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -27,7 +28,8 @@ import { DashboardComponent } from './components/user-management/dashboard/dashb
     GalleryComponent,
     RegistrationComponent,
     SignupComponent,
-    DashboardComponent
+    DashboardComponent,
+    FeaturedProductsComponent
   ],
   imports: [
     BrowserModule,
